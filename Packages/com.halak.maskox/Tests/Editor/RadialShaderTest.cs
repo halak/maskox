@@ -2,16 +2,16 @@
 using UnityEngine;
 using UnityEngine.TestTools;
 using NUnit.Framework;
-using UnityAssert = UnityEngine.Assertions.Assert;
+using RangeAttribute = NUnit.Framework.RangeAttribute;
 
 namespace Maskox.Tests.Editor
 {
-    public class IrisShaderTest
+    public class RadialShaderTest
     {
         [UnityTest]
         public IEnumerator Incremental(
-            [Random(-10.0f, 10.0f, 4)] float dx,
-            [Random(-10.0f, 10.0f, 4)] float dy)
+            [Range(-1.0f, +1.5f, 4)] float dx,
+            [Range(-2.0f, +1.2f, 3)] float dy)
         {
             using (var map = new MonochromeTexture("Maskox/Radial"))
             {

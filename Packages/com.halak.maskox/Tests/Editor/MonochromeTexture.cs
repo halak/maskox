@@ -83,6 +83,12 @@ namespace Maskox.Tests.Editor
             UpdateReadableTexture();
         }
 
+        public void Export(string path)
+        {
+            var bytes = readableTexture.EncodeToPNG();
+            System.IO.File.WriteAllBytes(path, bytes);
+        }
+
         public void AssertIncremental(Vector2 start, Vector2 end, float step = 0.01f)
         {
             for (var t = step; t < 1.0f; t += step)

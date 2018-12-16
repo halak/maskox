@@ -64,9 +64,9 @@ v2f_maskox MaskoxVertexShaderLinearGradient(appdata_customrendertexture IN)
     float radian = radians(_Maskox_Angle);
     MaskoxGetVertexAndTexcoord(IN.vertexID % 6, OUT.vertex, uv);
 
-    float scale = abs(1 * cos(radian)) + abs(1 * sin(radian));
+    float scale = 1.0f / (abs(1 * cos(radian)) + abs(1 * sin(radian)));
 
-    OUT.texcoord.x = ((uv.x - 0.5) / scale * cos(radian)) + ((uv.y - 0.5) / scale * sin(radian)) + 0.5;
+    OUT.texcoord.x = ((uv.x - 0.5f) * scale * cos(radian)) + ((uv.y - 0.5f) * scale * sin(radian)) + 0.5f;
     OUT.texcoord.y = 0;
 
     return OUT;
