@@ -1,0 +1,10 @@
+*.sln
+*.suo
+*.csproj
+*.user
+.vs/
+Library/
+Logs/
+Temp/
+bin/
+obj/
