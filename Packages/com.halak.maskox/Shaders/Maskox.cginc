@@ -48,8 +48,10 @@ float4 _Maskox_MaskTex_ST;
 
 float MaskoxGetContour(float2 texcoord)
 {
-    const float ax = dot(float2(tex2D(_Maskox_MaskTex, texcoord).r, 1), _Maskox_MaskTex_ST.zw);
-    return tex2D(_Maskox_ContourTex, float2(ax, 0.5f)).r;
+    const float scale = _Maskox_MaskTex_ST.x;
+    const float offset = _Maskox_MaskTex_ST.z;
+    const float a = tex2D(_Maskox_MaskTex, texcoord).r;
+    return tex2D(_Maskox_ContourTex, float2(((a - 1 + offset) / scale) + offset, 0.5f)).r;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -42,14 +42,12 @@ namespace Maskox
                     {
                         EditorGUIUtility.labelWidth = customArea.width * 0.4f;
                         vector.x = Mathf.Clamp(EditorGUI.FloatField(sizeArea, "Length", vector.x), 0.001f, 1.0f);
-                        vector.y = EditorGUI.Slider(offsetArea, "Position", vector.y, 0.0f, 1.0f);
+                        vector.z = EditorGUI.Slider(offsetArea, "Position", vector.z, 0.0f, 1.0f);
                     }
                     finally
                     {
                         if (EditorGUI.EndChangeCheck())
                         {
-                            vector.z = 1.0f / vector.x;
-                            vector.w = (-(1.0f - vector.y) / vector.x) + vector.y;
                             prop.textureScaleAndOffset = vector;
                         }
 
