@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.TestTools;
-using NUnit.Framework;
 using UnityAssert = UnityEngine.Assertions.Assert;
 using RangeAttribute = NUnit.Framework.RangeAttribute;
 

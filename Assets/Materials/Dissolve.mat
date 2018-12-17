@@ -48,9 +48,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
-        m_Texture: {fileID: 8600000, guid: 18c2de2c7a59fa6459e234459310ce65, type: 2}
+        m_Texture: {fileID: 8600000, guid: 298b3bb6ba455a646b85be5313c5859a, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Maskox_ContourTex:
+        m_Texture: {fileID: 2800000, guid: a42d83df1bd24c84fb5497f862cae7ae, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Maskox_MaskTex:
+        m_Texture: {fileID: 2800000, guid: bc5c6d3988e3e4d4e8d86c873aea324d, type: 3}
+        m_Scale: {x: 0.5, y: 0.4}
+        m_Offset: {x: 2, y: -0.79999995}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}

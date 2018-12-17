@@ -7,15 +7,15 @@
 
     SubShader
     {
+        Tags { "IgnoreProjector"="True" }
         Cull Off ZWrite Off ZTest Always
 
         Pass
         {
             Name "Default"
-
             CGPROGRAM
             #include "Maskox.cginc"
-            #pragma vertex MaskoxVertexShaderIris
+            #pragma vertex MaskoxVertexShaderRadial
             #pragma fragment MaskoxFragmentShaderUVLength
             ENDCG
         }

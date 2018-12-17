@@ -4,6 +4,8 @@
 
 #include "UnityCustomRenderTexture.cginc"
 
+#define MASKOX_SQRT2 (1.41421356237f)
+
 void MaskoxGetVertexAndTexcoord(uint vertexID, out float4 vertex, out float2 texcoord)
 {
 #if UNITY_UV_STARTS_AT_TOP
@@ -37,7 +39,17 @@ float MaskoxError(float x)
 
 float MaskoxGaussianCumulative(float x)
 {
-    return (1.0f + (MaskoxError(x / 1.41421356237f))) / 2.0f;
+    return (1.0f + (MaskoxError(x / MASKOX_SQRT2))) / 2.0f;
+}
+
+sampler2D _Maskox_MaskTex;
+sampler2D _Maskox_ContourTex;
+float4 _Maskox_MaskTex_ST;
+
+float MaskoxGetContour(float2 texcoord)
+{
+    const float ax = dot(float2(tex2D(_Maskox_MaskTex, texcoord).r, 1), _Maskox_MaskTex_ST.zw);
+    return tex2D(_Maskox_ContourTex, float2(ax, 0.5f)).r;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,14 +86,14 @@ v2f_maskox MaskoxVertexShaderLinearGradient(appdata_customrendertexture IN)
 
 float2 _Maskox_Center = float2(0.5, 0.5);
 
-v2f_maskox MaskoxVertexShaderIris(appdata_customrendertexture IN)
+v2f_maskox MaskoxVertexShaderRadial(appdata_customrendertexture IN)
 {
     v2f_maskox OUT;
     float2 uv;
     MaskoxGetVertexAndTexcoord(IN.vertexID % 6, OUT.vertex, uv);
 
-    OUT.texcoord.x = (uv.x - _Maskox_Center.x) * 2;
-    OUT.texcoord.y = (uv.y - _Maskox_Center.y) * 2;
+    OUT.texcoord.x = (uv.x - _Maskox_Center.x) * MASKOX_SQRT2;
+    OUT.texcoord.y = (uv.y - _Maskox_Center.y) * MASKOX_SQRT2;
     
     return OUT;
 }

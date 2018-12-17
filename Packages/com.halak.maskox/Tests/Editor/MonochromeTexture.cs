@@ -1,10 +1,27 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Maskox.Tests.Editor
 {
-    public sealed class MonochromeTexture : IDisposable
+    public struct MonochromeTexel
+    {
+        public readonly int X;
+        public readonly int Y;
+        public readonly float Alpha;
+
+        public MonochromeTexel(int x, int y, float alpha)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Alpha = alpha;
+        }
+
+        public override string ToString() => FormattableString.Invariant($"{Alpha:0.###} ({X}, {Y})");
+    }
+
+    public sealed class MonochromeTexture : IDisposable, IEnumerable<MonochromeTexel>
     {
         private Material material;
         private CustomRenderTexture writableTexture;
@@ -25,6 +42,7 @@ namespace Maskox.Tests.Editor
         }
 
         public MonochromeTexture(string shaderName) : this(Shader.Find(shaderName)) { }
+        public MonochromeTexture(string shaderName, int width, int height) : this(Shader.Find(shaderName), width, height, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear) { }
         public MonochromeTexture(Shader shader) : this(shader, 256, 256, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear) { }
         public MonochromeTexture(Shader shader, int width, int height, RenderTextureFormat format, RenderTextureReadWrite readWrite)
         {
@@ -110,5 +128,20 @@ namespace Maskox.Tests.Editor
                 RenderTexture.active = originalActiveRenderTexture;
             }
         }
+
+        public IEnumerator<MonochromeTexel> GetEnumerator()
+        {
+            var pixels = readableTexture.GetPixels(0);
+            var width = readableTexture.width;
+            var height = readableTexture.height;
+            var index = 0;
+            for (var y = 0; y < height; y++)
+            {
+                for (var x = 0; x < width; x++)
+                    yield return new MonochromeTexel(x, y, pixels[index++].r);
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

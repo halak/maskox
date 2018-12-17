@@ -9,11 +9,11 @@ namespace Maskox
 {
     public static class TextureGenerator
     {
-        private static readonly string AutoLabel = "MonochromePainter.Auto";
+        private static readonly string AutoLabel = "Maskox.Auto";
 
         public static async Task ExportAsync(CustomRenderTexture customRenderTexture, float progress)
         {
-            EditorUtility.DisplayProgressBar("Monochrome Painter - Export", customRenderTexture.name, progress);
+            EditorUtility.DisplayProgressBar("Maskox - Export", customRenderTexture.name, progress);
 
             customRenderTexture.Initialize();
 
@@ -45,10 +45,10 @@ namespace Maskox
             File.WriteAllBytes(Path.ChangeExtension(assetPath, "png"), bytes);
         }
 
-        [MenuItem("Assets/Monochrome Painter/Export")]
+        [MenuItem("Assets/Maskox/Export")]
         private static void ExportAll()
         {
-            EditorUtility.DisplayProgressBar("Monochrome Painter - Export", "Starting...", 0.0f);
+            EditorUtility.DisplayProgressBar("Maskox - Export", "Starting...", 0.0f);
 
             var context = TaskScheduler.FromCurrentSynchronizationContext();
             var assetGUIDs = AssetDatabase.FindAssets($"l:{AutoLabel} t:{nameof(CustomRenderTexture)}");

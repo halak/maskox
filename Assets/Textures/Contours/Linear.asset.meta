@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 9a5cd8e3c783b22439c6ae7d265bbff5
+labels:
+- Maskox.Auto
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 8600000

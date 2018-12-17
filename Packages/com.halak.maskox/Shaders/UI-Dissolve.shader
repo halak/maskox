@@ -5,8 +5,8 @@
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
         _Color ("Tint", Color) = (1,1,1,1)
 
-        _MaskTex ("Mask Texture", 2D) = "white" {}
-        _ContourTex ("Contour Texture", 2D) = "white" {} 
+        [MaskTexture] _Maskox_MaskTex ("Mask Texture", 2D) = "white" {}
+        [ContourTexture] _Maskox_ContourTex ("Contour Texture", 2D) = "white" {} 
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -56,6 +56,7 @@
 
             #include "UnityCG.cginc"
             #include "UnityUI.cginc"
+            #include "Maskox.cginc"
 
             #pragma multi_compile __ UNITY_UI_CLIP_RECT
             #pragma multi_compile __ UNITY_UI_ALPHACLIP
@@ -78,13 +79,10 @@
             };
 
             sampler2D _MainTex;
-            sampler2D _MaskTex;
-            sampler2D _ContourTex;
             fixed4 _Color;
             fixed4 _TextureSampleAdd;
             float4 _ClipRect;
             float4 _MainTex_ST;
-            float4 _MaskTex_ST;
 
             v2f vert(appdata_t v)
             {
@@ -104,8 +102,7 @@
             {
                 half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
 
-                const half ax = dot(half2(tex2D(_MaskTex, IN.texcoord).r, 1), _MaskTex_ST.xz);
-                color.a *= tex2D(_ContourTex, half2(ax, 0.5)).r;
+                color.a *= MaskoxGetContour(IN.texcoord);
 
                 #ifdef UNITY_UI_CLIP_RECT
                 color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
