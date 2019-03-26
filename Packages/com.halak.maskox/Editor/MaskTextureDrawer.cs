@@ -5,9 +5,6 @@ namespace Maskox
 {
     public sealed class MaskTextureDrawer : MaterialPropertyDrawer
     {
-        private GUIContent[] temporaryContents = new GUIContent[2];
-        private float[] temporaryValues = new float[2];
-
         public override float GetPropertyHeight(MaterialProperty prop, string label, MaterialEditor editor)
             => GetTextureFieldHeight();
 
