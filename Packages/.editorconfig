@@ -1,0 +1,2 @@
+[*.cs]
+dotnet_style_readonly_field = false:silent
