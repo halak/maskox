@@ -46,12 +46,21 @@ sampler2D _Maskox_MaskTex;
 sampler2D _Maskox_ContourTex;
 float4 _Maskox_MaskTex_ST;
 
+inline float MaskoxSampleTexture2D(sampler2D samp, float2 uv)
+{
+#if MASKOX_USE_RED_CHANNEL
+    return tex2D(samp, uv).r;
+#else
+    return tex2D(samp, uv).a;
+#endif
+}
+
 float MaskoxGetContour(float2 texcoord)
 {
     const float scale = _Maskox_MaskTex_ST.x;
     const float offset = _Maskox_MaskTex_ST.z;
-    const float a = tex2D(_Maskox_MaskTex, texcoord).r;
-    return tex2D(_Maskox_ContourTex, float2(((a - 1 + offset) / scale) + offset, 0.5f)).r;
+    const float a = MaskoxSampleTexture2D(_Maskox_MaskTex, texcoord);
+    return MaskoxSampleTexture2D(_Maskox_ContourTex, float2(((a - 1 + offset) / scale) + offset, 0.5f));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +105,7 @@ v2f_maskox MaskoxVertexShaderRadial(appdata_customrendertexture IN)
 
     OUT.texcoord.x = (uv.x - _Maskox_Center.x) * MASKOX_SQRT2;
     OUT.texcoord.y = (uv.y - _Maskox_Center.y) * MASKOX_SQRT2;
-    
+
     return OUT;
 }
 

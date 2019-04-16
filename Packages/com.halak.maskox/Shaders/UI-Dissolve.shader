@@ -6,7 +6,7 @@
         _Color ("Tint", Color) = (1,1,1,1)
 
         [MaskTexture] _Maskox_MaskTex ("Mask Texture", 2D) = "white" {}
-        [ContourTexture] _Maskox_ContourTex ("Contour Texture", 2D) = "white" {} 
+        [ContourTexture] _Maskox_ContourTex ("Contour Texture", 2D) = "white" {}
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -17,6 +17,7 @@
         _ColorMask ("Color Mask", Float) = 15
 
         [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
+        [Toggle(MASKOX_USE_RED_CHANNEL)] _UseRedChannel ("Use Red Channel", Float) = 1
     }
 
     SubShader
@@ -60,6 +61,7 @@
 
             #pragma multi_compile __ UNITY_UI_CLIP_RECT
             #pragma multi_compile __ UNITY_UI_ALPHACLIP
+            #pragma multi_compile __ MASKOX_USE_RED_CHANNEL
 
             struct appdata_t
             {
