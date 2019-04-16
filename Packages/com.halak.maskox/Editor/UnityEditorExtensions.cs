@@ -46,8 +46,6 @@ namespace Maskox
             {
                 var curve = new AnimationCurve();
 
-                var linear = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
-
                 const int Samples = 256;
                 const float dx = 1.0f / Samples;
 
@@ -114,7 +112,7 @@ namespace Maskox
         {
             if (temporaryTexture == null)
             {
-                temporaryTexture = new Texture2D(256, 1, TextureFormat.ARGB32, false, false);
+                temporaryTexture = new Texture2D(256, 1, TextureFormat.RGBA32, false, false);
                 temporaryTexture.hideFlags = HideFlags.DontSave;
                 temporaryTexture.wrapMode = TextureWrapMode.Clamp;
             }
