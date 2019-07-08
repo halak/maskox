@@ -55,12 +55,12 @@ inline float MaskoxSampleTexture2D(sampler2D samp, float2 uv)
 #endif
 }
 
-float MaskoxGetContour(float2 texcoord)
+float MaskoxGetContour(float2 texcoord, float offset)
 {
     const float scale = _Maskox_MaskTex_ST.x;
-    const float offset = _Maskox_MaskTex_ST.z;
+    const float position = _Maskox_MaskTex_ST.z + offset;
     const float a = MaskoxSampleTexture2D(_Maskox_MaskTex, texcoord);
-    return MaskoxSampleTexture2D(_Maskox_ContourTex, float2(((a - 1 + offset) / scale) + offset, 0.5f));
+    return MaskoxSampleTexture2D(_Maskox_ContourTex, float2(((a - 1 + position) / scale) + position, 0.5f));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
