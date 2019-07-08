@@ -2,8 +2,8 @@ Shader "Maskox/Dissolve"
 {
     Properties
     {
-        [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-        _Color ("Tint", Color) = (1,1,1,1)
+        _MainTex ("Main Texture", 2D) = "white" {}
+        _Color ("Color", Color) = (1,1,1,1)
 
         [MaskTexture] _Maskox_MaskTex ("Mask Texture", 2D) = "white" {}
         [ContourTexture] _Maskox_ContourTex ("Contour Texture", 2D) = "white" {}
