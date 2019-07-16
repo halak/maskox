@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Maskox
+namespace Maskox.Demo
 {
     public sealed class SlideShow : MonoBehaviour
     {

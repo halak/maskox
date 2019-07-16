@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using RangeAttribute = NUnit.Framework.RangeAttribute;
 
-namespace Maskox.Tests.Editor
+namespace Maskox.Editor.Tests
 {
     public class RadialShaderTest
     {

@@ -3,12 +3,12 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace Maskox.Tests.Editor
+namespace Maskox.Editor.Tests
 {
     public class StepShaderTest
     {
         [UnityTest]
-        public IEnumerator Zero_Or_One([Range(0.0f, 360.0f, 15.0f)] float angle)
+        public IEnumerator ZeroOrOne([Range(0.0f, 360.0f, 15.0f)] float angle)
         {
             using (var texture = new MonochromeTexture("Maskox/Step", 64, 64))
             {

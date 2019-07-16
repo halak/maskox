@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-namespace Maskox.Tests.Editor
+namespace Maskox.Editor.Tests
 {
     public struct MonochromeTexel
     {
@@ -93,10 +94,11 @@ namespace Maskox.Tests.Editor
 
         public IEnumerator Update()
         {
-            var previousCount = writableTexture.updateCount;
             writableTexture.Update();
-            while (previousCount == writableTexture.updateCount)
-                yield return null;
+
+            EditorApplication.Step();
+
+            yield return null;
 
             UpdateReadableTexture();
         }

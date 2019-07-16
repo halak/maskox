@@ -1,7 +1,7 @@
 {
   "name": "com.halak.maskox",
   "displayName": "Maskox",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "unity": "2018.1",
   "description": "Dissolve, Wipe Transition Mask Texture Generator",
   "dependencies": {}

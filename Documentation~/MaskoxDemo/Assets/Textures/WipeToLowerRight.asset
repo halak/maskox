@@ -6,7 +6,7 @@ CustomRenderTexture:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Linear
+  m_Name: WipeToLowerRight
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -14,7 +14,7 @@ CustomRenderTexture:
   m_DownscaleFallback: 0
   serializedVersion: 3
   m_Width: 256
-  m_Height: 1
+  m_Height: 256
   m_AntiAliasing: 1
   m_DepthFormat: 0
   m_ColorFormat: 8
@@ -34,12 +34,12 @@ CustomRenderTexture:
     m_WrapW: 1
   m_Dimension: 2
   m_VolumeDepth: 1
-  m_Material: {fileID: 2100000, guid: 74f5faef87ff7f3409a32742a2ab55e9, type: 2}
+  m_Material: {fileID: 2100000, guid: 3c2ed3bdf35845148ad84f1306d519f7, type: 2}
   m_InitSource: 0
   m_InitMaterial: {fileID: 0}
   m_InitColor: {r: 1, g: 1, b: 1, a: 1}
   m_InitTexture: {fileID: 0}
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_InitializationMode: 0
   m_UpdateZoneSpace: 0
   m_CurrentUpdateZoneSpace: 0

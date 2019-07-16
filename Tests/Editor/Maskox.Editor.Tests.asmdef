@@ -1,5 +1,5 @@
 {
-    "name": "Maskox.Tests.Editor",
+    "name": "Maskox.Editor.Tests",
     "references": [],
     "optionalUnityReferences": [
         "TestAssemblies"
@@ -12,5 +12,6 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": []
 }

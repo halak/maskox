@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.halak.maskox": "file:../../../",
     "com.unity.package-manager-ui": "2.1.2",
     "com.unity.modules.ui": "1.0.0"
-  }
+  },
+  "testables": ["com.halak.maskox"]
 }

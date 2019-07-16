@@ -4,7 +4,7 @@ using UnityEngine.TestTools;
 using UnityAssert = UnityEngine.Assertions.Assert;
 using RangeAttribute = NUnit.Framework.RangeAttribute;
 
-namespace Maskox.Tests.Editor
+namespace Maskox.Editor.Tests
 {
     public class LinearShaderTest
     {
