@@ -7,6 +7,7 @@
 
         [MaskTexture] _Maskox_MaskTex ("Mask Texture", 2D) = "white" {}
         [ContourTexture] _Maskox_ContourTex ("Contour Texture", 2D) = "white" {}
+        [Toggle(MASKOX_INVERT)] _Maskox_InvertTex ("Invert", Float) = 0
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -18,6 +19,7 @@
 
         [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
         [Toggle(MASKOX_USE_RED_CHANNEL)] _UseRedChannel ("Use Red Channel", Float) = 1
+        [Toggle(MASKOX_IGNORE_VERTEX_ALPHA)] _IgnoreVertexAlpha ("Ignore Vertex Alpha", Float) = 0
     }
 
     SubShader
@@ -59,9 +61,11 @@
             #include "UnityUI.cginc"
             #include "Maskox.cginc"
 
+            #pragma multi_compile __ MASKOX_INVERT
             #pragma multi_compile __ UNITY_UI_CLIP_RECT
             #pragma multi_compile __ UNITY_UI_ALPHACLIP
             #pragma multi_compile __ MASKOX_USE_RED_CHANNEL
+            #pragma multi_compile __ MASKOX_IGNORE_VERTEX_ALPHA
 
             struct appdata_t
             {
@@ -97,6 +101,11 @@
                 OUT.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 
                 OUT.color = v.color * _Color;
+
+                #if MASKOX_IGNORE_VERTEX_ALPHA
+                OUT.color.a = _Color.a;
+                #endif
+
                 return OUT;
             }
 

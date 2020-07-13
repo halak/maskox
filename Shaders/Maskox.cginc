@@ -1,4 +1,3 @@
-
 #ifndef HALAK_MASKOX_INCLUDED
 #define HALAK_MASKOX_INCLUDED
 
@@ -59,7 +58,11 @@ float MaskoxGetContour(float2 texcoord, float offset)
 {
     const float scale = _Maskox_MaskTex_ST.x;
     const float position = _Maskox_MaskTex_ST.z + offset;
+    #if MASKOX_INVERT
+    const float a = 1.0f - MaskoxSampleTexture2D(_Maskox_MaskTex, texcoord);
+    #else
     const float a = MaskoxSampleTexture2D(_Maskox_MaskTex, texcoord);
+    #endif
     return MaskoxSampleTexture2D(_Maskox_ContourTex, float2(((a - 1 + position) / scale) + position, 0.5f));
 }
 
