@@ -61,11 +61,11 @@
             #include "UnityUI.cginc"
             #include "Maskox.cginc"
 
-            #pragma multi_compile __ MASKOX_INVERT
-            #pragma multi_compile __ UNITY_UI_CLIP_RECT
-            #pragma multi_compile __ UNITY_UI_ALPHACLIP
-            #pragma multi_compile __ MASKOX_USE_RED_CHANNEL
-            #pragma multi_compile __ MASKOX_IGNORE_VERTEX_ALPHA
+            #pragma multi_compile_local _ MASKOX_INVERT
+            #pragma multi_compile_local _ UNITY_UI_CLIP_RECT
+            #pragma multi_compile_local _ UNITY_UI_ALPHACLIP
+            #pragma multi_compile_local _ MASKOX_USE_RED_CHANNEL
+            #pragma multi_compile_local _ MASKOX_IGNORE_VERTEX_ALPHA
 
             struct appdata_t
             {
