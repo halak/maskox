@@ -14,6 +14,7 @@
         {
             Name "Default"
             CGPROGRAM
+            #include "UnityCustomRenderTexture.cginc"
             #include "Maskox.cginc"
             #pragma vertex MaskoxVertexShaderRadial
             #pragma fragment MaskoxFragmentShaderUVLength

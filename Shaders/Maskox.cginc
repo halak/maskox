@@ -1,8 +1,6 @@
 #ifndef HALAK_MASKOX_INCLUDED
 #define HALAK_MASKOX_INCLUDED
 
-#include "UnityCustomRenderTexture.cginc"
-
 #define MASKOX_SQRT2 (1.41421356237f)
 
 void MaskoxGetVertexAndTexcoord(uint vertexID, out float4 vertex, out float2 texcoord)
@@ -68,6 +66,8 @@ float MaskoxGetContour(float2 texcoord, float offset)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#ifdef UNITY_CUSTOM_TEXTURE_INCLUDED
+
 struct v2f_maskox
 {
     float4 vertex   : SV_POSITION;
@@ -111,6 +111,8 @@ v2f_maskox MaskoxVertexShaderRadial(appdata_customrendertexture IN)
 
     return OUT;
 }
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
