@@ -17,7 +17,7 @@ namespace Maskox
                 return null;
 
             AnimationCurve curve = null;
-            var cacheKey = ((ulong)texture.updateCount << 32) | (uint)texture.GetInstanceID();
+            var cacheKey = ((ulong)texture.updateCount << 32) | (uint)texture.GetEntityId().GetHashCode();
             if (texture == null || curveCache.TryGetValue(cacheKey, out curve))
                 return curve;
 
