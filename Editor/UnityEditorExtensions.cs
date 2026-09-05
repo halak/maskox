@@ -118,7 +118,7 @@ namespace Maskox
             }
 
             if (temporaryTexture.width != width || temporaryTexture.height != height)
-                temporaryTexture.Resize(width, height);
+                temporaryTexture.Reinitialize(width, height);
 
             return temporaryTexture;
         }
